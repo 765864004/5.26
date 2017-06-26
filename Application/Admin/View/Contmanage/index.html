@@ -1,0 +1,139 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+<block name="css">
+    <style>
+        .table{ margin-top: 20px; border-left: 1px solid #7bd9f5;  border-top: 1px solid #7bd9f5;}
+        .table td,.table th { border-right: 1px solid #7bd9f5;  border-bottom: 1px solid #7bd9f5;}
+
+        .sort{ width: 60px; height: 25px;}
+        .catename{font-weight:bold;color:#a7cb52;}
+    </style>
+</block>
+
+<block name="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>内容管理</h1>
+        </div>
+
+        <div class="col-sm-10">
+            <div class="col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href="{{:U('contmanage/index')}}">栏目管理</a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{{:U('add')}}" class="btn btn-info">新增顶级栏目</a>
+                        <a href="#" id="sort_order" class="btn btn-success">排序</a>
+
+                        <table class="table">
+                            <thead>
+                            <tr><th colspan="4">栏目管理</th></tr>
+                            <tr>
+                                <th>排序</th>
+                                <th>栏目名称</th>
+                                <th>栏目文章</th>
+                                <th>设置 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> </th>
+                            </tr>
+                            </thead>
+
+                            <form action="" method="post" class="my_form">
+                            <tbody>
+                            <!--使用递归无限分类-->
+                                <volist name="categories" id="category">
+                                <tr class="success" id="tr">
+                                    <th scope="row">
+                                        <input type="hidden" name="id[]" value="{{$category.id}}">
+                                        <input type="text" name="sort_order[]" value="{{$category.sort_order}}" class="form-control sort" placeholder="Text input">
+                                    </th>
+                                    <td>{{$category.count|indent_blank}}{{$category.name}}
+                                        <span class="catename"><eq name="category.type" value="0">【封面】</eq></span>
+                                        <span class="catename"><eq name="category.display" value="1">【隐藏】</eq></span>
+                                    </td>
+                                    <td><a href="{{:U('article/articleList', array('id'=>$category[id]))}}">查看栏目文章</a></td>
+                                    <td>
+                                        <a href="{{:U('add', array('id'=>$category[id]))}}" title="添加栏目"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        <a href="{{:U('edit', array('id'=>$category[id]))}}" title="编辑栏目" id="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                        <a href="{{:U('delete', array('id'=>$category[id]))}}" title="删除栏目"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                    </td>
+                                </tr>
+                                </volist>
+
+                            <!--使用关联-->
+                            <!--
+                            &lt;!&ndash;父类 S&ndash;&gt;
+                            <volist name="categorys" id="category">
+                            <tr class="success" id="tr">
+                                <th scope="row">
+                                    <input type="hidden" name="id[]" value="{{$category.id}}">
+                                    <input type="text" name="sort_order[]" value="{{$category.sort_order}}" class="form-control sort" placeholder="Text input">
+                                </th>
+                                <td>{{$category.name}}
+                                    &lt;!&ndash;如果name的值和value的值相等&ndash;&gt;
+                                    <span class="catename"><eq name="category.type" value="0">【封面】</eq></span>
+                                    <span class="catename"><eq name="category.display" value="1">【隐藏】</eq></span>
+                                </td>
+                                <td><a href="{{:U('article/articleList', array('id'=>$category[id]))}}">查看栏目文章</a></td>
+                                <td>
+                                    <a href="{{:U('add', array('id'=>$category[id]))}}" title="添加栏目"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                    <a href="{{:U('edit', array('id'=>$category[id]))}}" title="编辑栏目" id="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                    <a href="{{:U('delete', array('id'=>$category[id]))}}" title="删除栏目"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                </td>
+                            </tr>
+                            &lt;!&ndash;父类 E&ndash;&gt;
+
+                            &lt;!&ndash;子类 S&ndash;&gt;
+                            <volist name="category.childs" id ="child">
+                            <tr class="success" id="">
+                                <th scope="row" style="padding-left: 20px;">
+                                    <input type="hidden" name="id[]" value="{{$child.id}}">
+                                    <input type="text" name="sort_order[]" value="{{$child.sort_order}}" class="form-control sort" placeholder="Text input">
+                                </th>
+                                <td style="text-indent:40px;">{{$child.name}}
+                                    <span class="catename"><eq name="child.type" value="0">【封面】</eq></span>
+                                    <span class="catename"><eq name="child.display" value="1">【隐藏】</eq></span>
+                                </td>
+                                <td style="text-indent:40px;"><a href="{{:U('article/articleList', array('id'=>$child[id]))}}">查看栏目文章2222</a></td>
+                                <td>
+                                    <a href="{{:U('contmanage/add', array('id'=>$child[id]))}}" title="添加栏目"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                    <a href="{{:U('edit', array('id'=>$child[id]))}}" title="编辑栏目"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                    <a href="{{:U('delete', array('id'=>$child[id]))}}" title="删除栏目"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                </td>
+                            </tr>
+                            </volist>
+                            &lt;!&ndash;子类 E&ndash;&gt;
+                            </volist>-->
+
+                            </tbody>
+                            </form>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</block>
+
+<block name="js">
+    <script>
+        $(function(){
+            $("tbody tr:even").addClass("info").removeClass("success");
+        })
+
+        //点击排序
+        $("#sort_order").click(function(){
+            $(".my_form").attr('action',"{{:U('sort_order')}}").submit();
+        })
+
+        $("#edit").click(function(){
+            //$(".my_form").attr('action',"{{:U('update')}}").submit();
+        })
+
+
+    </script>
+</block>

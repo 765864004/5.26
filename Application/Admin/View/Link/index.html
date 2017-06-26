@@ -1,0 +1,278 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+
+<block name="css">
+
+</block>
+<block name="content">
+
+<div class="content">
+   <h1>友情链接管理</h1>
+   <div class="col-sm-8">
+      <form action="" method="post" class="my_form">
+         <table class="table table-bordered" style="background: #fff">
+            <thead>
+            <tr>
+               <th><input type="checkbox" id="checked_all">全选</th>
+               <th>编号</th>
+               <th>名称</th>
+               <th>网址</th>
+               <th>排序</th>
+               <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <volist name="links" id="link">
+               <tr class="edit_{{$link.id}}" data-id="{{$link.id}}">
+                  <!--单选框-->
+                  <td> <input type="checkbox" class="check_id" id="check_id" name="check_id[]" value="{{$link.id}}"> </td>
+                  <!--id-->
+                  <td class="id"> {{$link.id}} </td>
+                  <!--url名称-->
+                  <td class="name link" contenteditable> {{$link.name}}</td>
+                  <!--url-->
+                  <td class="url">{{$link.url}}</td>
+                  <!--sort_order-->
+                  <td>
+                     <input type="hidden" name="id[]" value="{{$link.id}}">
+                     <input type="text" class="sort_order" name="sort_order[]" value="{{$link.sort_order}}"> </td>
+                  <!--编辑 删除-->
+                  <td>
+                     <a href="" data-toggle="modal" data-target="#editModal" data-id="{{$link.id}}" class="edit_link">编辑</a>
+                     <a href="" class="del_one">删除</a>
+                  </td>
+               </tr>
+            </volist>
+
+            </tbody>
+         </table>
+      </form>
+   </div>
+
+   <div class="col-sm-2">
+      <div class="list-group">
+         <a href="#" data-toggle="modal" data-target="#addModal" class="list-group-item list-group-item-success">
+            新增
+         </a>
+         <a href="#" id="sort_order" class="list-group-item list-group-item-success">
+            排序
+         </a>
+         <a href="#" id="destroy_checked" class="list-group-item list-group-item-warning">删除</a>
+      </div>
+   </div>
+
+
+   <!--编辑 S-->
+   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h4 class="modal-title" id="exampleModalLabel">编辑友情链接</h4>
+            </div>
+            <div class="modal-body">
+               <form class="" id="edit_form">
+                  <input type="hidden" name="id" id="editId">
+                  <div class="form-group">
+                     <label for="editName" class="control-label">名称</label>
+                     <input type="text" name="name" class="form-control" id="editName" placeholder="请输入名称">
+                  </div>
+                  <div class="form-group">
+                     <label for="editUrl" class="control-label">网址</label>
+                     <input type="text" name="url" class="form-control" id="editUrl" placeholder="请输入网址">
+                  </div>
+
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+               <button type="button" id="do_update" class="btn btn-primary">修改</button>
+            </div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <!--编辑 E-->
+
+   <!--新增 S-->
+   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h4 class="modal-title" id="addModalLabel">新增友情链接</h4>
+            </div>
+            <div class="modal-body">
+               <form action="{{:U('add')}}" method="post">
+                  <input type="hidden" name="id" id="addId">
+                  <div class="form-group">
+                     <label for="addName" class="control-label">名称</label>
+                     <input type="text" name="name" class="form-control" id="addName" placeholder="请输入名称">
+                  </div>
+                  <div class="form-group">
+                     <label for="addUrl" class="control-label">网址</label>
+                     <input type="text" name="url" class="form-control" id="addUrl" placeholder="请输入网址">
+                  </div>
+
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+               <button type="button" id="add" class="btn btn-primary">新增</button>
+            </div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <!--新增 E-->
+
+</div>
+</block>
+
+<block name="js">
+   <script>
+      $(function(){
+         //点击编辑 弹出框
+         $(".edit_link").click(function(){
+            var $tr =$(this).parents("tr");
+            var id = $tr.children(".id").text();//获取id(获取class="id"的文本内容)
+            $.get("{{:U('show_edit')}}", {id:id} , function(data){ //提交到show_edit 发送id 获取data(ajaxReturn($link))将获取的data赋值给input
+               console.log(data);
+               //设置表单默认信息（弹窗表单）(查询到的数据库信息)
+               $("#editName").val(data.name);
+               $("#editUrl").val(data.url);
+               $("#editId").val(data.id); //设置id
+            })
+         })
+
+         //提交编辑
+         $("#do_update").click(function(){
+            //获取表单修改后信息（弹窗表单）
+            var info = {
+               id:$("#editId").val(),
+               name:$("#editName").val(),
+               url:$("#editUrl").val()
+            };
+            //发送表单信息（提交到update函数 save()返回修改后的信息）
+            $.post("{{:U('update')}}",info,function(data){ //
+               //console.log(data);
+               //设置修改后的信息
+               $("#editModal").modal('hide'); //点击提交时 弹窗隐藏
+               var $tr = $(".edit_" + info.id);
+               $tr.children(".name").text(info.name);
+               $tr.children(".url").text(info.url);
+            })
+         })
+
+         //新增
+         $("#add").click(function(){
+            var info = {
+               name:$("#addName").val(),
+               url:$("#addUrl").val()
+            }
+            //console.log(info);
+            $.post("{{:U('add')}}",info,function(data){ //data接收add方法传递的info数组
+               console.log(data);
+               $("#addModal").modal('hide');
+               var html ='<tr class="edit_'+data.info.id+'" data-id="'+data.info.id+'">' +
+                       '<td> <input type="checkbox" class="check_id" id="check_id" name="check_id[]" value="'+data.info.id+'"> </td>' +
+                       '<td class="id"> '+data.info.id+' </td>' +
+                       '<td class="name link" contenteditable>'+info.name+'</td>' +
+                       '<td class="url">'+info.url+'</td>' +
+                       '<td><input type="hidden" name="id[]" value="'+data.info.id+'"><input type="text" class="sort_order" name="sort_order[]" value="99"></td>' +
+                       '<td><a href="" data-toggle="modal" data-target="#editModal" data-id="'+data.info.id+'" class="edit_link">编辑</a><a href="" class="del_one">删除</a></td>' +
+                       '</tr>';
+               $(html).appendTo("tbody").fadeIn(300);
+            },'json')
+         })
+
+         //排序(ajax)
+         $(".sort_order").change(function () {
+            var info = {
+               sort_order: $(this).val(), //获取表单输入的序号
+               id: $(this).parents("tr").data("id") //获取id
+            }
+            $.post("{{:U('change_sort')}}", info); //info 信息提交到change_sort
+         })
+
+         //删除一条
+         $(document).on("click",".del_one",function(){
+            var info = {
+               id:$(this).parents("tr").data("id") //获取id
+            }
+            $.post("{{:U('del_one')}}",info,function(){ //提交到del_one 发送id信息
+               $(this).parents("tr").remove(); //删除节点
+            })
+         })
+
+
+
+
+         //全选
+         $("#checked_all").click(function(){
+            $('.check_id').prop("checked",this.checked); //prop 获取属性并赋值
+         })
+
+         //点击删除
+         $("#destroy_checked").click(function(){
+            var length = 0 ;
+            length = $(".check_id:checked").length ;//被选中的个数
+            if(length<1){
+               alert("您必须至少选中一个");
+               return false;
+            }
+            $(".my_form").attr('action',"{{:U('destroy_checked')}}").submit(); //获取form的action属性 并赋值 提交
+
+         })
+
+         //点击排序
+         $("#sort_order").click(function(){
+            $(".my_form").attr('action',"{{:U('sort_order')}}").submit();
+         })
+
+      })
+
+   </script>
+
+
+<!--   <script>
+      //编辑 弹出框
+      $(".edit_link").click(function(){
+         //获取值
+         var id = $(this).data('id');//获取id
+         var $link=$(this).parent().siblings('.link').children('a'); //通过.link查找a标签  获取name
+         var name = $link.text();//获取网站名称
+         var url = $link.attr('href'); //获取url
+
+         //赋值（给弹窗表单赋值）
+         $("#editId").val(id); //隐藏表单赋值
+         $("#editName").val(name);
+         $("#editUrl").val(url);
+      })
+
+      //全选
+      $("#checked_all").click(function(){
+         $('.check_id').prop("checked",this.checked); //prop 获取属性并赋值
+      })
+
+
+
+      //点击删除
+      $("#destroy_checked").click(function(){
+         var length = 0 ;
+         length = $(".check_id:checked").length ;//被选中的个数
+         if(length<1){
+            alert("您必须至少选中一个");
+            return false;
+         }
+         $(".my_form").attr('action',"{{:U('destroy_checked')}}").submit(); //获取form的action属性 并赋值 提交
+
+      })
+
+      //点击排序
+      $("#sort_order").click(function(){
+         $(".my_form").attr('action',"{{:U('sort_order')}}").submit();
+      })
+
+   </script>-->
+
+
+</block>

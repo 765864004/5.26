@@ -1,0 +1,157 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+<block name="css">
+    <style>
+        #page2 {
+            display: none;
+        }
+    </style>
+</block>
+
+<block name="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>站点信息</h1>
+        </div>
+
+        <div class="col-sm-10">
+            <div class="col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">System Config</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <volist name="side" id="side">
+                        <form class="form-horizontal" id="form" method="post" action="{{:U('update')}}">
+
+                            <div id="page1">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">网站名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="side" id="title" placeholder="网站名称" value="{{$side.side}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="keyword" class="col-sm-2 control-label">关键词</label>
+                                    <div class="col-sm-6">
+                                        <textarea name="keyword" id="keyword" rows="3" class="form-control" placeholder="关键词">{{$side.keyword}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="col-sm-2 control-label">描述信息</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="description" id="description" rows="5" class="form-control"
+                                  placeholder="描述信息">{{$side.description}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">姓名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="name" id="title" placeholder="姓名" value="{{$side.name}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">年龄</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="age" id="title" placeholder="年龄" value="{{$side.age}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">性别</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="sex" id="title" placeholder="性别" value="{{$side.sex}}">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="page2">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">联系电话</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="tel" id="title" placeholder="联系电话" value="{{$side.tel}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">邮箱</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="email" id="title" placeholder="邮箱" value="{{$side.email}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="title" class="col-sm-2 control-label">QQ</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="qq" id="title" placeholder="QQ" value="{{$side.qq}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" class="btn btn-primary" disabled id="prev">后 退</button>
+                                    <button type="button" class="btn btn-primary" id="next">前 进</button>
+                                </div>
+                            </div>
+                        </form>
+                        </volist>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-2">
+                <!--<div class="list-group">-->
+                    <!--<a href="#" class="list-group-item list-group-item-success">-->
+                        <!--新增-->
+                    <!--</a>-->
+                    <!--<a href="#" class="list-group-item list-group-item-warning">删除</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+
+    </div>
+</block>
+
+<block name="js">
+    <script>
+        $(function () {
+            var $page1 = $("#page1");
+            var $page2 = $("#page2");
+            var $next = $("#next");
+            var $prev = $("#prev");
+
+            $next.click(function () {
+                if ($(this).text() == '提 交') {
+                    $("#form").submit();
+                    return false;
+                }
+
+                $page1.hide();
+                $page2.fadeIn(300);
+                $prev.prop("disabled", false);
+                $next.text("提 交");
+            });
+
+            $prev.click(function () {
+                $page2.hide();
+                $page1.fadeIn(300);
+                $prev.prop("disabled", true);
+                $next.text("前 进");
+            });
+        });
+    </script>
+</block>

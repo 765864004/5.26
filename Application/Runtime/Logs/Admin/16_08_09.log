@@ -1,0 +1,48 @@
+[ 2016-08-09T20:45:00+08:00 ] 127.0.0.1 /Admin/Link/show_edit.html?id=+7+
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `side` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `link` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `link` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2016-08-09T20:45:05+08:00 ] 127.0.0.1 /Admin/Link/show_edit.html?id=+7+
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `side` [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `link` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `link` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0030s ]
+
+[ 2016-08-09T20:45:19+08:00 ] 127.0.0.1 /Admin/Link/show_edit.html?id=+7+
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007000s ]
+SQL: SHOW COLUMNS FROM `side` [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `link` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `link` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2016-08-09T20:47:23+08:00 ] 127.0.0.1 /Admin/Link/show_edit.html?id=+7+
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `side` [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `link` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `link` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2016-08-09T20:47:32+08:00 ] 127.0.0.1 /Admin/Link/show_edit.html?id=+7+
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `side` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `link` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `link` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2016-08-09T20:48:06+08:00 ] 127.0.0.1 /Admin/Link/show_edit.html?id=+7+
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `side` [ RunTime:0.0110s ]
+SQL: SHOW COLUMNS FROM `link` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `link` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0020s ]
+

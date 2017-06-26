@@ -1,0 +1,60 @@
+<extend name="Application/Admin/View/Layouts/admin.html" />
+
+<block name="content">
+<div class="container" class = "col-sm-12" style = "background-color :#00d2dc; width: 600px;">
+    <h1>修改登录密码</h1>
+    <form action="{{:U('pw_update')}}" method="post">
+        <div class="form-group">
+            用户名：{{$user.username}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">用户名</label>
+            <input type="password" name="username" class="form-control" id="exampleInputUsername1" placeholder="请填写用户名">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">原始密码</label>
+            <input type="password" name="old" class="form-control" id="exampleInputPassword1" placeholder="请填写原始密码">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">新密码</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="再次输入密码">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">确认新密码</label>
+            <input type="password" name="new2" class="form-control" id="exampleInputPassword3" placeholder="确认新密码">
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="password" name="code" class="form-control" id="" placeholder="请填写验证码">
+            </div>
+            <div class="col-sm-3">
+                <img src="" alt="" id="verify" style="cursor: pointer">
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-default">提交</button>
+    </form>
+
+</div>
+</block>
+
+<block name="js">
+<script src="__PUBLIC__/assets/js/jquery-2.2.2.min.js"></script>
+<script src="__PUBLIC__/assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        var src = "{{:U('verify')}}" + "?" + Math.random();
+        $("#verify").attr("src", src);
+
+
+        $("#verify").click(function () {
+            $(this).attr("src", src);
+        })
+    })
+</script>
+</block>

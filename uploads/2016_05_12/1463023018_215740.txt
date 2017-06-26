@@ -1,0 +1,11 @@
+insert into article (username, content, time) values ('hello', 'mysql', '333333333');
+
+update article set time='222222222' where id = '3'
+
+delete from article where id = '2'
+
+SELECT * FROM 	article  WHERE id='3'
+
+SELECT id, username FROM article WHERE id>2
+
+tpcms3.app/Admin/user/login

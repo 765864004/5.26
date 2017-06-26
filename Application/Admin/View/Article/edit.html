@@ -1,0 +1,326 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+<block name="css">
+    <link href="__PUBLIC__/assets/select2/css/select2.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/assets/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css">
+<style>
+    .table{ margin-top: 20px; border-left: 1px solid #7bd9f5;  border-top: 1px solid #7bd9f5;}
+    .table td,.table th { border-right: 1px solid #7bd9f5;  border-bottom: 1px solid #7bd9f5;}
+    .table .td {  text-align: right;  }
+    .float{ float: left;}
+    .margin{ margin-left: 15px; _display:inline;}
+
+    .sort{ width: 60px; height: 25px;}
+</style>
+</block>
+
+<block name="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>修改文章</h1>
+        </div>
+
+        <div class="col-sm-10">
+            <div class="col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">修改文章</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{:U('update')}}" method="post">
+                            <input type="hidden" name="id" value="{{$article.id}}">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Column heading</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="active">
+                                <th scope="row" class="td">所属栏目</th>
+                                <td>
+                                    <div class="form-group col-sm-10">
+                                        <!--选择顶级栏目时 如何获取category_id-->
+                                        <select name="category_id" class="form-control" style="width: 500px">
+                                            <option value="0">
+                                                顶级栏目
+                                            </option>
+                                            <volist name="categories" id="cates">
+                                                <option value="{{$cates.id}}" <eq name="cates.id" value="$article.category_id">selected = "selected"</eq>>
+                                                {{$cates.count|indent_blank}}{{$cates.name}}
+                                                </option>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="td" scope="row">标题</th>
+                                <td>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" name="title" value="{{$article.title}}" class="form-control" placeholder="文章标题">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="success">
+                                <th scope="row" class="td">标题颜色</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <div id="cp2" class="input-group colorpicker-component">
+                                            <input type="text" name="color" value="{{$article.color}}" class="form-control"/>
+                                            <span class="input-group-addon"><i></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="td">发布日期</th>
+                                <td>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" id="time" name="date" value="{{$article.date}}" class="form-control" placeholder="发布日期">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="warning">
+                                <th scope="row" class="td col-sm-2">Description field</th>
+                                <td>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" name="description" value="{{$article.description}}" class="form-control" placeholder="文章描述">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="td">摘要</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <textarea name="abstract" class="form-control" rows="3">{{$article.abstract}}</textarea>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row" class="td">小区</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="address" class="title form-control" value="{{$article.address}}" placeholder="小区">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="td">价格</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="money" class="title form-control" value="{{$article.money}}" placeholder="价格">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="td">房屋面积</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="size" class="title form-control" value="{{$article.size}}" placeholder="房屋面积">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row" class="td">房型</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="room" class="title form-control" value="{{$article.room}}" placeholder="房型">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row" class="td">区域</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <select name="area" class="form-control">
+                                            <option value="汉口" <eq name="article.area" value="汉口">selected = "selected"</eq> >汉口</option>
+                                            <option value="武昌" <eq name="article.area" value="武昌">selected = "selected"</eq>>武昌</option>
+                                            <option value="汉阳" <eq name="article.area" value="汉阳">selected = "selected"</eq>>汉阳</option>
+                                            <option value="新洲" <eq name="article.area" value="新洲">selected = "selected"</eq>>新洲</option>
+                                            <option value="黄陂" <eq name="article.area" value="黄陂">selected = "selected"</eq>>黄陂</option>
+                                            <option value="江夏" <eq name="article.area" value="江夏">selected = "selected"</eq>>江夏</option>
+                                            <option value="蔡甸" <eq name="article.area" value="蔡甸">selected = "selected"</eq>>蔡甸</option>
+                                            <option value="汉南" <eq name="article.area" value="汉南">selected = "selected"</eq>>汉南</option>
+                                            <option value="东西湖区" <eq name="article.area" value="东西湖">selected = "selected"</eq>>东西湖区</option>
+                                            <option value="洪山" <eq name="article.area" value="洪山">selected = "selected"</eq>>洪山</option>
+                                            <option value="青山" <eq name="article.area" value="青山">selected = "selected"</eq>>青山</option>
+                                            <option value="硚口" <eq name="article.area" value="硚口">selected = "selected"</eq>>硚口</option>
+                                            <option value="江汉" <eq name="article.area" value="江汉">selected = "selected"</eq>>江汉</option>
+                                            <option value="江岸" <eq name="article.area" value="江岸">selected = "selected"</eq>>江岸</option>
+                                            <option value="武汉周边" <eq name="article.area" value="武汉周边">selected = "selected"</eq>>武汉周边</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="danger">
+                                <th scope="row" class="td">缩略图</th>
+                                <td>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" id="thumb1" name="thumb" value="{{$article.thumb}}" class="form-control" placeholder="缩略图">
+                                    </div>
+                                    <div class="float">
+                                        <input type="button"  value="上 传" onclick="BrowseServer('thumb1','img_show1')" class="btn btn-success" />
+                                    </div>
+                                    <div class="float margin">
+                                        <button type="button" class="btn btn-warning">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="td">新增附件</th>
+                                <td>
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn btn-info add_file">增加</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <volist name="article.arr_enclosure" id="arr_enclosure">
+                            <tr class="info file">
+                                <th scope="row" class="td">附件({{$key+1}})</th>
+                                <td>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" id="file1" name="enclosure[]" value="{{$arr_enclosure}}" class="form-control" placeholder="附件">
+                                    </div>
+                                    <div class="float">
+                                        <input type="button"  value="上 传" onclick="BrowseServer('file1')" class="btn btn-success" />
+                                    </div>
+                                    <div class="float margin">
+                                        <button type="button" class="del_thumb1 btn btn-warning">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </volist>
+
+                            <tr class="danger">
+                                <td colspan="2">
+                                    <textarea name="content" class="content">{{$article.content}}</textarea>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="col-sm-10 padd">
+                            <input type="submit" class="btn btn-info" value="提交">
+                            <a href="{{:U('allArticle')}}" class="btn btn-success">返回</a>
+                        </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</block>
+
+<block name="js">
+
+    <script type="text/javascript" src="__PUBLIC__/assets/select2/js/select2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/select2/js/i18n/zh-CN.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script>
+        $(function(){
+            $('select').select2(); //调用
+            $('#cp2').colorpicker();//颜色
+            $('#time').datepicker({
+                format: "yyyy-mm-dd",
+                language: "zh-CN"
+            });
+        })
+    </script>
+    <!--编辑器 S-->
+    <script type="text/javascript" src="__PUBLIC__/assets/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/js/ckfinder/ckfinder.js"></script>
+    <script>
+        CKEDITOR.replace('content',
+                {
+                    filebrowserBrowseUrl: '__PUBLIC__/assets/js/ckfinder/ckfinder.html',
+                    filebrowserImageBrowseUrl: '__PUBLIC__/assets/js/ckfinder/ckfinder.html?type=Images',
+                    filebrowserFlashBrowseUrl: '__PUBLIC__/assets/js/ckfinder/ckfinder.html?type=Flash',
+                    filebrowserUploadUrl: '__PUBLIC__/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl: '__PUBLIC__/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                    filebrowserFlashUploadUrl: '__PUBLIC__/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                });
+    </script>
+    <!--编辑器 S-->
+
+    <!--上传 S-->
+    <script type="text/javascript" src="__PUBLIC__/assets/js/ckfinder/ckfinder.js"></script>
+    <script>
+        function BrowseServer(thumb, img_show) {
+            var finder = new CKFinder();
+
+            //当选中图片时执行的函数
+            finder.selectActionFunction = function(fileUrl){
+                $("#"+thumb).val(fileUrl);
+                $("#"+img_show).attr("src",""+fileUrl+"");
+            }
+
+            finder.popup();//调用窗口
+        }
+    </script>
+    <!--上传 E-->
+
+    <!--增加附件 S-->
+    <script>
+
+        $(".add_file").click(function(){
+            var i=$('.file').size();
+            //alert(i);
+
+            var n = i+1;
+            var html = '<tr class="info file">' +
+                    ' <td scope="row" class="td">附件（'+n+'）' +
+                    '</td>' +
+                    ' <td>' +
+                    ' <div class="form-group col-sm-6"> ' +
+                    '<input type="text" id="file'+n+'" name="enclosure[]" class="form-control" placeholder="附件">' +
+                    '</div>' +
+                    '<div class="float">' +
+                    '<input type="button"  value="上 传" onclick="BrowseServer(\'file'+n+'\')" class="btn btn-success" />' +
+                    '</div>' +
+                    '<div class="float margin">' +
+                    '<button type="button" class="btn btn-warning del_thumb">删除</button>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>';
+            if(n < 6) {
+                $(".file:last").after(html); //在最后一个.file的后面添加
+            } else {
+                alert("您最多只能添加5个附件！");
+                return false;
+            }
+            $(this).blur();  //失去焦点
+            return false;   //不跳转
+
+        });
+
+        //删除动态添加的元素
+        $(document).on("click",".del_thumb",function(){
+            $(this).parents("tr").remove(); //删除.del_thumb的父级tr
+        })
+
+        //点击时清空第一个
+        $(".del_thumb1").click(function(){
+            $("#file1").val('');
+            //$(this).parents(".file").children("#file1").val('');
+        })
+
+    </script>
+    <!--增加附件 E-->
+</block>

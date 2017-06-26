@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+.show .back{
+			width: 388px;
+			height: 160px;
+			background: #ddd;
+			opacity: .7;
+			transition:all .5s ease .2s;
+			transform: rotateY(180deg);
+			-z-index:0;
+			}
+.show .front{ z-index:1;-transform: rotateY(0deg);transition:all .5s ease .2s;}
+.show .front,.show .back{position:absolute;}
+.show:hover .front{transform:rotateY(180deg); z-index:0;}
+.show:hover .back{transform:rotateY(360deg); z-index:1;}
+
+</style>
+</head>
+
+<body>
+
+	<div class="show">
+		<div class="front">
+			<img src="22.jpg" alt="">
+		</div>
+		<div class="back">
+			图片介绍说明
+		</div>
+	</div>
+	
+</body>
+</html>

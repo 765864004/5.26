@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="cf727ef0-c5da-4d12-bdcd-b5d2057e6920" name="houseinfo" url="http://47.89.44.233">
+        <fileTransfer host="47.89.44.233" port="22" privateKey="F:\id_rsa.rsa" rootFolder="/var/www/houseinfo" accessType="SFTP" username="root" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

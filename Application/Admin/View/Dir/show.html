@@ -1,0 +1,49 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+<block name="css">
+    <style>
+    </style>
+</block>
+
+<block name="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>前端文件管理</h1>
+        </div>
+
+        <div class="col-sm-10">
+            <div class="col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">显示图片</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!--显示图片 S-->
+                        <p>图片路径：{{$path}}</p>
+                        <img src="{{$path2[1]}}" width="300px" height="300px"/>
+                        <!--显示图片 E-->
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-2">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-success">
+                        新增文件
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-warning">新增文件夹</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</block>
+
+<block name="js">
+    <script>
+
+    </script>
+</block>

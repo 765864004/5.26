@@ -1,0 +1,240 @@
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>武汉新房出售_武汉新楼盘现房_武汉新开楼盘-武汉易登网</title>
+    <meta name="Description"
+          content="武汉新房出售为您提供大量武汉新房出售信息，您可以免费查询新房,新楼盘,新房网,新房出售,最新楼盘,房源,房源信息,最新开盘,期房,现房等信息，同时你可以免费发布武汉新房出售信息。"/>
+    <meta name="Keywords" content="武汉新房出售, 新房出售网, 新房, 新楼盘, 新房网, 新房出售, 最新楼盘, 房源, 免费新房出售信息, 武汉分类信息网"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="mobile-agent" content="format=xhtml; url=http://wap.wuhan.edeng.cn/33/loupan/"/>
+    <meta name="mobile-agent" content="format=html5; url=http://m.wuhan.edeng.cn/33/loupan/"/>
+
+    <link rel="stylesheet" href="http://img01.edeng.cn/css/2014/index.css"/>
+
+    <link rel="shortcut icon" href="http://img01.edeng.cn/images/favicon.ico" type="image/x-icon"/>
+
+    <style>
+        .scale{transition: all .5s ease .1s; z-index: 100;}
+        .scale:hover{--webkit-transform: scale(1.2); border: 2px solid rgba(209,209,209,0.8); z-index: 100;}
+        .m-a{ overflow: visible; float: left; }
+        .content{ overflow: visible; -float: left; }
+        .main{ overflow: visible; float: left; }
+        .showpage{ width:790px; margin-top: 30px;}
+        .pageall{ width: 200px;height: 30px; text-align: center; line-height: 30px; color: #ffffff; margin: 0 auto; overflow: hidden; background: #1b6d85;}
+        .pageall a{ color: #ffffff; display: block; float: left; width: 30px; height: 30px; line-height: 30px; }
+        .pageall a:hover{ background: #60caff;}
+    </style>
+
+    <link href="/Public/assets/bootstrap/css/2bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="top">
+    <div class="top-x">
+        <p class="top-a">
+            <img class="top-a2" src="http://img01.edeng.cn/images/2014/sj_03.jpg"><span>武汉</span>
+            [<a class="top-a1" href="http://hubei.edeng.cn/71/xiaogan/" target="_self">孝感</a><a class="top-a1"
+                                                                                                href="http://hubei.edeng.cn/71/huanggang/"
+                                                                                                target="_self">黄冈</a><a
+                class="top-a1" href="http://hubei.edeng.cn/71/ezhou/" target="_self">鄂州</a><a class="top-a1"
+                                                                                              href="http://hubei.edeng.cn/71/xianning/"
+                                                                                              target="_self">咸宁</a><a
+                class="top-a1" href="http://hubei.edeng.cn/71/huangshi/" target="_self">黄石</a><a class="top-a1"
+                                                                                                 href="http://yichang.edeng.cn/"
+                                                                                                 target="_self">宜昌</a><a
+                class="top-a1" href="http://www.edeng.cn/map.html">切换城市</a>]
+            <a class="top-a1" href="http://m.edeng.cn/">手机上易登</a>&nbsp;&nbsp;
+        </p>
+        <p class="top-a" style="padding-top:2px;padding-left:2px;height:27px;margin-left:15px;">
+            <a class="top-a1" target="_blank" href="http://tongji.edeng.cn/?f=http%3A%2F%2Fwww.edeng.cn"> 淘宝特卖 </a>&nbsp;
+        </p>
+        <div class="top-b" id="session_info_new">
+        </div><!--top-b-->
+    </div>
+
+</div><!--top-->
+<div class="logo ">
+    <a href=""><img src="http://img01.edeng.cn/images/2014/logo.jpg"></a>
+    <h1 class="logo-t">武汉新房出售<br>wuhan.edeng.cn</h1>
+    <a class="logo-a" target="_blank"
+       href="http://www.edeng.cn/code/bin/post/choice_cat_geo.php?geotrace=1&amp;cattrace="></a>
+</div>
+<link href="ui/templates/html/css/2014/list_gj_content.css" rel="stylesheet" type="text/css">
+
+<div class="m-head">
+    <div class="mh-1">
+        <a href="http://www.edeng.cn/">易登网</a> &gt; <a href="http://www.edeng.cn/13/fang/">房产网</a> &gt;
+        <a href="http://wuhan.edeng.cn/33/fang/">武汉房产网</a> &gt; <a href="http://wuhan.edeng.cn/33/zufang/">武汉租房</a>
+    </div>
+    <p class="mh-2"><span class="" onclick="window.location.href='http://wuhan.edeng.cn/33/zufang/'">区域/地标</span></p>
+    <div class="mh-list"><span>区域：</span>
+        <div class="list-z" style="width: 944px;">
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'')));?>" <?php if(($request["area"]) == ""): ?>class="list-c"<?php endif; ?>>全武汉</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'汉口')));?>" <?php if(($request["area"]) == "汉口"): ?>class="list-c"<?php endif; ?>>汉口</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'武昌')));?>" <?php if(($request["area"]) == "武昌"): ?>class="list-c"<?php endif; ?>>武昌</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'汉阳')));?>" <?php if(($request["area"]) == "汉阳"): ?>class="list-c"<?php endif; ?>>汉阳</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'新洲')));?>" title="新洲" class="list-b">新洲</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'黄陂')));?>" title="黄陂" class="list-b">黄陂</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'江夏')));?>" title="江夏" class="list-b">江夏</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'蔡甸')));?>" title="蔡甸" class="list-b">蔡甸</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'汉南')));?>" title="汉南" class="list-b">汉南</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'东西湖')));?>" title="东西湖区" class="list-b">东西湖区</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'洪山')));?>" title="洪山" class="list-b">洪山</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'青山')));?>" title="青山" class="list-b">青山</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'硚口')));?>" title="硚口" class="list-b">硚口</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'江汉')));?>" title="江汉" class="list-b">江汉</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'江岸')));?>" title="江岸" class="list-b">江岸</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('area'=>'武汉周边')));?>" title="武汉周边" class="list-b">武汉周边</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="mh-list"><span>租金：</span>
+        <div class="list-z" style="width: 944px;">
+            <a href="<?php echo U('article/show',array_merge($request,array('money'=>'')));?>" <?php if(($request["money"]) == ""): ?>class="list-c"<?php endif; ?>>不限</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('money'=>'0','money2'=>'500')));?>" <?php if(($request["money"]) == "0"): ?>class="list-c"<?php endif; ?>>500元以下</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('money'=>'500','money2'=>'1000')));?>" <?php if(($request["money"]) == "500"): ?>class="list-c"<?php endif; ?>>500-1000元</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('money'=>'1000','money2'=>'1200')));?>" <?php if(($request["money"]) == "1000"): ?>class="list-c"<?php endif; ?>>1000-1200元</a>
+            <a class="list-b" href="">1200-1500元</a>
+            <a class="list-b" href="">1500-1800元</a>
+            <a class="list-b" href="">1800-2000元</a>
+            <a class="list-b" href="">2000-3000元</a>
+            <a class="list-b" href="">3000元以上</a>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="mh-list"><span>居室：</span>
+        <div class="list-z" style="width: 944px;">
+            <a href="<?php echo U('article/show',array_merge($request,array('room'=>'')));?>" <?php if(($request["room"]) == ""): ?>class="list-c"<?php endif; ?>>不限</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('room'=>'一房')));?>" <?php if(($request["room"]) == "一房"): ?>class="list-c"<?php endif; ?>>一房</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('room'=>'两房')));?>" <?php if(($request["room"]) == "两房"): ?>class="list-c"<?php endif; ?>>两房</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('room'=>'三房')));?>" <?php if(($request["room"]) == "三房"): ?>class="list-c"<?php endif; ?>>三房</a>
+            <a class="list-b" href="http://wuhan.edeng.cn/nf/q/rentext/G49C2B4/">四房</a>
+            <a class="list-b" href="http://wuhan.edeng.cn/nf/q/rentext/G49C2B6/">单间</a>
+            <a class="list-b" href="http://wuhan.edeng.cn/nf/q/rentext/G49C2B7/">床位</a>
+            <a class="list-b" href="http://wuhan.edeng.cn/nf/q/rentext/G49C2B5/">其他</a>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="mh-list"><span>面积：</span>
+        <div class="list-z" style="width: 944px;">
+            <a href="<?php echo U('article/show',array_merge($request,array('size'=>'')));?>" <?php if(($request["size"]) == ""): ?>class="list-c"<?php endif; ?>>不限</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('size'=>'0','size2'=>'40')));?>" <?php if(($request["size"]) == "0"): ?>class="list-c"<?php endif; ?>>40平米以下</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('size'=>'41','size2'=>'60')));?>" <?php if(($request["size"]) == "41"): ?>class="list-c"<?php endif; ?>>41-60平米</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('size'=>'61','size2'=>'80')));?>" <?php if(($request["size"]) == "61"): ?>class="list-c"<?php endif; ?>>61平米-80平米</a>
+            <a href="<?php echo U('article/show',array_merge($request,array('size'=>'81','size2'=>'100')));?>">81平米-100平米</a>
+            <a href="http://wuhan.edeng.cn/nf/q/rentext/G49C2S5/">101-120平米</a>
+            <a href="http://wuhan.edeng.cn/nf/q/rentext/G49C2S6/">121平米-140平米</a>
+            <a href="http://wuhan.edeng.cn/nf/q/rentext/G49C2S7/">141平米-160平米</a>
+            <a href="http://wuhan.edeng.cn/nf/q/rentext/G49C2S8/">161平米-180平米</a>
+            <a href="http://wuhan.edeng.cn/nf/q/rentext/G49C2S9/">180平米以上</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <link rel="stylesheet" href="http://img01.edeng.cn/css/2014/region_fresh1.css?ver=15523">
+    <script type="text/javascript">
+        $(".mh-list").find("span").each(function () {
+            w = $(this).width();
+            for (i = 0; i < 8; i++) {
+                n = 1000 - w - 20;
+                $(this).siblings(".list-z").css('width', n);
+            }
+        });
+    </script>
+    <!--搜索 S-->
+    <div class="mh-i">
+
+        <form action="<?php echo U('Article/show', array('id' => $id));?>" method="post">
+            <input type="text" name="search">
+            <button type="submit"></button>
+        </form>
+    </div>
+    <!--搜索 E-->
+
+</div>
+<div class="content">
+    <div class="con-head">
+        <p><span><a href="33/loupan/">武汉新房出售</a></span></p>
+
+        <div class="ch-a"><input type="checkbox" value="35/loupan-tupian/" id="ch-t"><label for="ch-t">只看有图</label>
+        </div>
+
+    </div>
+    <div class="main">
+
+        <!--show S-->
+        <?php if(is_array($article)): $i = 0; $__LIST__ = $article;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$art): $mod = ($i % 2 );++$i;?><div class="m-a scale">
+                <img width="56" height="56" class="a-i" src="<?php echo ($art["thumb"]); ?>">
+                <ul>
+                    <li>
+                        <a href="<?php echo U('article/showone', array('id'=>$art[id]));?>" target="_blank" class="a-t"><?php echo ($art["title"]); ?></a>
+                        <span class="a-ti"><b><?php echo ($art["money"]); ?>元/月</b></span>
+                    </li>
+                    <li class="a-2"><p><?php echo ($art["title"]); ?></p><span><?php echo ($art["room"]); ?></span></li>
+                    <li class="a-1">
+                        <a href="53/hanyang/loupan/"><?php echo ($art["area"]); ?></a> -
+                        <a href="63/wangjiawan/loupan/"><?php echo ($art["address"]); ?></a> -
+                        21小时以前
+                    </li>
+                </ul>
+            </div><?php endforeach; endif; else: echo "" ;endif; ?>
+        <!--show E-->
+        <div class="clear"></div>
+
+        <!--分页 S-->
+
+        <div class="showpage">
+            <div class="pageall"><?php echo ($page); ?></div>
+        </div>
+
+        <!--<div class="page">
+            <a class="p-l" href="javascript:void(0);"></a>
+
+            <a class="p-r" href="33/loupan/2/"></a>
+        </div>-->
+        <!--分页 E-->
+        <div class="clear"></div>
+
+    </div>
+
+    <!--main-->
+    <div class="side">
+        <div class="side-a to_top_cat">
+            <a href="33/fang/">武汉房产网</a>
+        </div>
+        <div class="side-a"><p class="side-a1">热门搜索</p>
+            <ul class="side-a2"></ul>
+        </div>
+
+        <script type="text/javascript"
+                src="http://img01.edeng.cn/js/featured_ads.js?t=3&g=49&c=2600&p=3&l=t&pt=LP"></script>
+        <div class="side-a">
+            <div id="onlineads_ss_top"></div>
+        </div>
+        <div class="side-a" style="padding-left:10px;width:180px;">
+            <script type="text/javascript">
+                /*列表页160x600_20160307*/
+                var cpro_id = "u2546599";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+        </div>
+        <div class="side-a"><p class="side-a1">新房出售频道介绍</p>
+            <p class="s-zuf">武汉新房出售网是武汉地区最大的新房出售信息网，本站有最新的武汉新房出售信息免费查询，您可以免费发布武汉新房出售信息，感谢您选择武汉新房出售网。</p></div>
+        <div class="side-a"><i class="s-sill"></i>
+            <a class="s-line" href="#" target="_blank" title="联系客服">联系客服</a></div>
+    </div>
+    <!--content-->
+    <p id="back-to-top"><a href="#top"><span></span></a></p>
+
+
+</div>
+
+<script src="/Public/assets/js/jquery-2.2.2.min.js"></script>
+</body>
+</html>

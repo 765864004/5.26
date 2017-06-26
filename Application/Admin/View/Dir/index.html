@@ -1,0 +1,106 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+<block name="css">
+    <style>
+        .table{ margin-top: 20px; border-left: 1px solid #7bd9f5;  border-top: 1px solid #7bd9f5;}
+        .table td,.table th { border-right: 1px solid #7bd9f5;  border-bottom: 1px solid #7bd9f5;}
+
+        .sort{ width: 60px; height: 25px;}
+        .catename{font-weight:bold;color:#a7cb52;}
+    </style>
+</block>
+
+<block name="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>前端文件管理</h1>
+        </div>
+
+        <div class="col-sm-10">
+            <div class="col-sm-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">前端文件管理</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!--文件上传 S-->
+                        <form enctype="multipart/form-data" method="post"  action="{{:U('upload', array('path'=>$path))}}">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                            <input type="file" name="file" style="margin-bottom: 15px;"/>
+                            <input type="submit" class="btn btn-primary btn-sm">
+                        </form>
+                        <!--文件上传 E-->
+
+                        <table class="table">
+                            <thead>
+                            <tr><th colspan="6">栏目管理</th></tr>
+                            <tr>
+                                <th>#</th>
+                                <th>文件/目录名</th>
+                                <th>文件类型</th>
+                                <th>文件大小</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!--遍历目录 S-->
+                            <volist name="files" id="file">
+                            <tr class="success" id="tr">
+                                <th scope="row">1</th>
+                                <td>{{$file.name}}</td>
+                                <td>{{$file.type}}</td>
+                                <td>{{$file.size}}</td>
+                                <td>{{$file.filectime|date="Y-m-d",###}}</td>
+                                <td>
+                                    <eq name="file.type" value="目录文件"><!--传递参数 文件路径+文件名-->
+                                        <a href="{{:U('index',array('path'=>$path.'/'.$file['name']))}}">进入</a>
+                                    </eq>
+
+                                    <eq name="file.type" value="普通文件">
+                                        <a href="{{:U('edit', array('path'=>$path.'/'.$file['name']))}}">编辑</a>
+                                        <a href="{{:U('destroy', array('path'=>$path.'/'.$file['name']))}}">删除</a>
+                                        <a href="{{:U('download', array('path'=>$path.'/'.$file['name']))}}">下载</a>
+                                    </eq>
+
+                                    <eq name="file.type" value="图片">
+                                        <a href="{{:U('show', array('path'=>$path.'/'.$file['name']))}}">显示图片</a>
+                                        <a href="{{:U('destroy', array('path'=>$path.'/'.$file['name']))}}">删除</a>
+                                        <a href="{{:U('download', array('path'=>$path.'/'.$file['name']))}}">下载</a>
+                                    </eq>
+
+                                </td>
+                            </tr>
+                            </volist>
+                            <!--遍历目录 E-->
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-2">
+                <div class="list-group">
+                    <a href="{{:U('add', array('path'=>$path))}}" class="list-group-item list-group-item-success">
+                        新增文件
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-warning">新增文件夹</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</block>
+
+<block name="js">
+    <script>
+        $(function(){
+            $("tbody tr:even").addClass("info").removeClass("success");
+        })
+    </script>
+</block>

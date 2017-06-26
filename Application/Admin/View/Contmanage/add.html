@@ -1,0 +1,224 @@
+<extend name="Application/Admin/View/Layouts/admin.html"/>
+<block name="css">
+    <style>
+        .padd {
+            padding-top: 30px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .table {
+            margin-top: 20px;
+            border-left: 1px solid #7bd9f5;
+            border-top: 1px solid #7bd9f5;
+        }
+
+        .table td, .table th {
+            border-right: 1px solid #7bd9f5;
+            border-bottom: 1px solid #7bd9f5;
+        }
+
+        .table .td {
+            text-align: right;
+        }
+        #myTabs li a{ background: #a4eaff; color: #412309;}
+        #myTabs li a:hover{ background: #5bc0de; color: #f6fdff;}
+
+    </style>
+</block>
+
+<block name="content">
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>内容管理</h1>
+    </div>
+
+    <div class="col-sm-10">
+        <div class="col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">新增栏目</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+                        <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
+                                   aria-expanded="true">添加栏目</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#profile" role="tab" id="profile-tab" data-toggle="tab"
+                                   aria-controls="profile" aria-expanded="false">栏目内容</a>
+                            </li>
+                        </ul>
+                        <!--选项卡内容-->
+                        <div id="myTabContent" class="tab-content">
+                            <!--添加栏目 S-->
+                            <div role="tabpanel" class="tab-pane fade active in" id="home"
+                                 aria-labelledby="home-tab">
+
+                                    <form action="{{:U('do_add_category')}}" method="post">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="td">栏目属性</th>
+                                            <th style="text-align: center">属性值</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="active">
+                                            <th scope="row" class="td">父栏目</th>
+                                            <td>
+                                                <div class="form-group col-sm-10">
+                                                    <select name="parent_id" class="form-control" style="width: 500px">
+                                                        <option value="0">
+                                                            顶级栏目
+                                                        </option>
+
+                                                            <!--
+                                                            <volist name="categorys" id="cates">
+                                                            <option value="{{$cates.id}}" <eq name="cates.id" value="$category.parent_id">
+                                                                selected = "selected"
+                                                            </eq>>
+                                                                　　　　{{$cates.name}}
+                                                            </option>
+                                                                <volist name="cates.childs" id="child">
+                                                                <option value="{{$child.id}}">
+                                                                    　　　　　　　　{{$child.name}}
+                                                                </option>
+                                                                </volist>
+                                                            </volist>
+                                                            -->
+
+                                                            <volist name="categories" id="cates">
+                                                            <option value="{{$cates.id}}" <eq name="cates.id" value="$category.id">selected = "selected"</eq>>
+                                                                {{$cates.count|indent_blank}}{{$cates.name}}
+                                                            </option>
+                                                            </volist>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="td">名称</th>
+                                            <td>
+                                                <div class="form-group col-sm-10">
+                                                    <input type="text" name="name" class="form-control" placeholder="栏目名称">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="success">
+                                            <th scope="row" class="td">拼音</th>
+                                            <td>
+                                                <div class="form-group col-sm-10">
+                                                    <input type="text" name="englishname" class="form-control" id="" placeholder="栏目拼音">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="td">类型</th>
+                                            <td>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="type" value="0"> 封面
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="type" value="1"> 列表
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="type" value="2"> URL跳转
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="info">
+                                            <th scope="row" class="td">URL跳转地址</th>
+                                            <td>
+                                                <div class="form-group col-sm-10">
+                                                    <input type="text" name="url" class="form-control" value="" placeholder="如果选择了URL跳转,请填写地址">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="danger">
+                                            <th scope="row" class="td">是否显示</th>
+                                            <td>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="display" value="0"> 是
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="display" value="1"> 否
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="col-sm-10 padd">
+                                        <input type="submit" class="btn btn-info" value="添加">
+                                        <a href="{{:U('contmanage/index')}}" class="btn btn-success">返回</a>
+                                    </div>
+                                    </form>
+
+                            </div>
+                            <!--添加栏目 E-->
+
+                            <!--栏目内容S-->
+                            <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+                                <form  action="{{:U('add_cont')}}" method="post">
+                                <textarea name="content" class="content"></textarea>
+
+                                <div class="form-group col-sm-10 padd">
+                                    <label for="exampleInputName2">是否显示</label>
+                                    <input type="radio"> 是
+                                    <input type="radio"> 否
+                                </div>
+
+                                <div class="col-sm-10 padd">
+                                    <input type="submit" class="btn btn-info" value="添加">
+                                    <a href="{{:U('contmanage/index')}}" class="btn btn-success">返回</a>
+                                </div>
+                                </form>
+                            </div>
+                            <!--栏目内容 E-->
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+</block>
+
+<block name="js">
+    <script type="text/javascript" src="__PUBLIC__/assets/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/js/ckfinder/ckfinder.js"></script>
+    <script>
+        CKEDITOR.replace('content',
+                {
+                    filebrowserBrowseUrl: '__PUBLIC__/assets/js/ckfinder/ckfinder.html',
+                    filebrowserImageBrowseUrl: '__PUBLIC__/assets/js/ckfinder/ckfinder.html?type=Images',
+                    filebrowserFlashBrowseUrl: '__PUBLIC__/assets/js/ckfinder/ckfinder.html?type=Flash',
+                    filebrowserUploadUrl: '__PUBLIC__/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl: '__PUBLIC__/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                    filebrowserFlashUploadUrl: '__PUBLIC__/assets/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                });
+    </script>
+</block>
